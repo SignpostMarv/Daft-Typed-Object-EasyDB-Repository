@@ -1,0 +1,60 @@
+{
+    "name": "signpostmarv/daft-typed-object-easydb-repository",
+    "description": "Typed Object EasyDB Repository: Simplified version of signpostmarv/daft-db-object for signpostmarv/daft-typed-object",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "SignpostMarv",
+            "email": "me@signpostmarv.name"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"SignpostMarv\\DaftTypedObject\\": "./src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"SignpostMarv\\DaftTypedObject\\": [
+				"./tests/",
+				"./vendor/signpostmarv/daft-typed-object/Tests/",
+				"./vendor/signpostmarv/daft-typed-object-repository/Tests/"
+			]
+		}
+	},
+	"config": {
+		"classmap-authoritative": true,
+		"sort-packages": true
+	},
+	"scripts": {
+		"tests": [
+			"phpunit",
+			"@static-analysis"
+		],
+		"static-analysis": [
+			"psalm --shepherd --show-info=false",
+			"phpcpd src tests",
+			"phpmnd ./ --exclude=./phpunit/ --exclude=./vendor/ --non-zero-exit-on-violation --hint",
+			"composer-require-checker check ./composer.json",
+			"php-cs-fixer fix --verbose --dry-run"
+		]
+	},
+    "require": {
+        "php": "^7.3",
+        "ext-PDO": "*",
+        "paragonie/easydb": "^2.10",
+        "signpostmarv/daft-typed-object": "dev-master",
+        "signpostmarv/daft-typed-object-repository": "dev-master"
+    },
+    "require-dev": {
+        "maglnet/composer-require-checker": "^2.0",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "^8.3",
+        "povils/phpmnd": "^2.1",
+        "psalm/plugin-phpunit": "^0.7.0",
+        "roave/security-advisories": "dev-master",
+        "sebastian/phpcpd": "^4.1",
+        "signpostmarv/php-cs-fixer-config": "^0.11.0",
+        "vimeo/psalm": "3.x-dev"
+    }
+}

@@ -1,0 +1,20 @@
+dist: xenial
+language: php
+php:
+  - 7.3
+cache:
+  files:
+    - ./phpunit.cache
+    - ./.php_cs.cache
+  directories:
+    - ./vendor/
+install:
+  - travis_retry composer install --no-interaction --no-suggest --prefer-source
+script:
+  - composer run static-analysis
+  - ./vendor/bin/phpunit --coverage-clover=./phpunit.clover
+  - ./vendor/bin/php-coveralls
+matrix:
+  fast_finish: true
+services:
+  - mysql
