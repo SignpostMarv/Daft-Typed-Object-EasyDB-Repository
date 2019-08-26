@@ -994,12 +994,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object-Repository.git",
-                "reference": "7e21a43c5d9018566a2c5e9730a8f1b4ba473a1d"
+                "reference": "ab5e5f525c168ec1fd9129c91e380309a136bd6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/7e21a43c5d9018566a2c5e9730a8f1b4ba473a1d",
-                "reference": "7e21a43c5d9018566a2c5e9730a8f1b4ba473a1d",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/ab5e5f525c168ec1fd9129c91e380309a136bd6e",
+                "reference": "ab5e5f525c168ec1fd9129c91e380309a136bd6e",
                 "shasum": ""
             },
             "require": {
@@ -1048,7 +1048,7 @@
                 }
             ],
             "description": "Typed Object Repository: Simplified version of signpostmarv/daft-object-repository for signpostmarv/daft-typed-object",
-            "time": "2019-08-26T20:23:00+00:00"
+            "time": "2019-08-26T22:48:28+00:00"
         },
         {
             "name": "symfony/console",

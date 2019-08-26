@@ -29,7 +29,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				],
 				[
 					[
-						'id' => 1,
+						'id' => '1',
 						'name' => 'foo',
 					],
 				],
@@ -56,7 +56,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				],
 				[
 					[
-						'id' => 1,
+						'id' => '1',
 						'name' => 'foo',
 					],
 				],

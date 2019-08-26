@@ -157,14 +157,12 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 			$row = $sth->fetch(PDO::FETCH_ASSOC);
 
 			if (is_array($row)) {
-				$row['id'] = (int) $row['id'];
-
 				/**
 				* @var T1
 				*/
 				$maybe = $type::__fromArray($row);
 
-				$this->UpdateTypedObject($maybe);
+				parent::UpdateTypedObject($maybe);
 			}
 		}
 
