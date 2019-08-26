@@ -19,10 +19,15 @@ use SignpostMarv\DaftTypedObject\DaftTypedObjectForRepository;
 */
 class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository
 {
-	protected function __construct(
+	/**
+	* @param class-string<T1> $type
+	* @param EasyDB $connection
+	* @param string $table
+	*/
+	public function __construct(
 		string $type,
-		EasyDB $connection,
-		string $table
+		EasyDB $connection = null,
+		string $table = null
 	) {
 		parent::__construct(
 			$type,

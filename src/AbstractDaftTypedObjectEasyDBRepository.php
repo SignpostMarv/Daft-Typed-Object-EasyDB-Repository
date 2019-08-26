@@ -29,13 +29,25 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 
 	/**
 	* @param class-string<T1> $type
+	* @param EasyDB $connection
+	* @param string $table
 	*/
-	protected function __construct(
+	public function __construct(
 		string $type,
-		EasyDB $connection,
-		string $table
+		EasyDB $connection = null,
+		string $table = null
 	) {
 		parent::__construct($type);
+
+		/**
+		* @var EasyDB
+		*/
+		$connection = $connection;
+
+		/**
+		* @var string
+		*/
+		$table = $table;
 
 		$this->connection = $connection;
 		$this->table = $table;
@@ -165,46 +177,5 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 		}
 
 		return $maybe;
-	}
-
-	/**
-	* @param class-string<T1> $type
-	* @param EasyDB $args[0]
-	* @param string $args[1]
-	*
-	* @return static
-	*/
-	public static function DaftTypedObjectRepositoryByType(
-		string $type,
-		...$args
-	) : DaftTypedObjectRepository {
-		/**
-		* @var EasyDB
-		*/
-		$connection = $args[0];
-
-		/**
-		* @var string
-		*/
-		$table = $args[1];
-
-		return static::DaftTypedObjectEasyDBRepositoryByType(
-			$type,
-			$connection,
-			$table
-		);
-	}
-
-	/**
-	* @param class-string<T1> $type
-	* @param mixed ...$_args
-	*/
-	public static function DaftTypedObjectEasyDBRepositoryByType(
-		string $type,
-		EasyDB $connection,
-		string $table,
-		...$_args
-	) : AbstractDaftTypedObjectEasyDBRepository {
-		return new static($type, $connection, $table);
 	}
 }
