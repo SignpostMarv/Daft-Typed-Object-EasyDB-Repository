@@ -39,6 +39,11 @@
 			"php-cs-fixer fix --verbose --dry-run"
 		]
 	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.2.x-dev"
+		}
+	},
 	"conflict": {
 		"vimeo/psalm": "<3.4"
 	},
