@@ -28,29 +28,21 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	protected $table;
 
 	/**
-	* @param class-string<T1> $type
-	* @param EasyDB $connection
-	* @param string $table
+	* @param array{
+		type:class-string<T1>,
+		ParagonIE\EasyDB\EasyDB:EasyDB,
+		table:string
+	} $options
 	*/
 	public function __construct(
-		string $type,
-		EasyDB $connection = null,
-		string $table = null
+		array $options
 	) {
-		parent::__construct($type);
+		parent::__construct([
+			'type' => $options['type'],
+		]);
 
-		/**
-		* @var EasyDB
-		*/
-		$connection = $connection;
-
-		/**
-		* @var string
-		*/
-		$table = $table;
-
-		$this->connection = $connection;
-		$this->table = $table;
+		$this->connection = $options[EasyDB::class];
+		$this->table = $options['table'];
 	}
 
 	/**

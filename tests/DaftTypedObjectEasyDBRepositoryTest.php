@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\DaftTypedObject;
 
+use ParagonIE\EasyDB\EasyDB;
 use ParagonIE\EasyDB\Factory;
 
 class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
@@ -14,11 +15,11 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 	{
 		$out = [
 			[
-				Fixtures\MutableForRepository::class,
 				Fixtures\EasyDBTestRepository::class,
 				[
-					Factory::create('sqlite::memory:'),
-					'foo',
+					'type' => Fixtures\MutableForRepository::class,
+					EasyDB::class => Factory::create('sqlite::memory:'),
+					'table' => 'foo',
 				],
 				[
 					[
@@ -37,15 +38,15 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 
 		if ('true' === getenv('TRAVIS')) {
 			$out[] = [
-				Fixtures\MutableForRepository::class,
 				Fixtures\EasyDBTestRepository::class,
 				[
-					Factory::create(
+					'type' => Fixtures\MutableForRepository::class,
+					EasyDB::class => Factory::create(
 						'mysql:host=localhost;dbname=travis',
 						'travis',
 						''
 					),
-					'foo',
+					'table' => 'foo',
 				],
 				[
 					[

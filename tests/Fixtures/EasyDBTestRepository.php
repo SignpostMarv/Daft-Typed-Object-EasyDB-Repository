@@ -20,20 +20,17 @@ use SignpostMarv\DaftTypedObject\DaftTypedObjectForRepository;
 class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository
 {
 	/**
-	* @param class-string<T1> $type
-	* @param EasyDB $connection
-	* @param string $table
+	* @param array{type:class-string<T1>, EasyDB::class:EasyDB, table:string}
 	*/
 	public function __construct(
-		string $type,
-		EasyDB $connection = null,
-		string $table = null
+		array $options
 	) {
 		parent::__construct(
-			$type,
-			$connection,
-			$table
+			$options
 		);
+
+		$connection = $options[EasyDB::class];
+		$table = $options['table'];
 
 		$query =
 			'CREATE TABLE IF NOT EXISTS ' .

@@ -50,8 +50,8 @@
         "ext-PDO": "*",
         "paragonie/easydb": "^2.10",
         "roave/you-are-using-it-wrong": "^1.1",
-        "signpostmarv/daft-typed-object": "^0.1|^0.2|0.2.x-dev",
-        "signpostmarv/daft-typed-object-repository": "^0.1|^0.2|0.2.x-dev"
+        "signpostmarv/daft-typed-object": "^0.2|0.2.x-dev",
+        "signpostmarv/daft-typed-object-repository": "^0.2|0.2.x-dev"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0",
