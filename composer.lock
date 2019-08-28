@@ -174,12 +174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object-Repository.git",
-                "reference": "ab5e5f525c168ec1fd9129c91e380309a136bd6e"
+                "reference": "a07573bb11109d5dbf0623fb495e65d4b56a010f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/ab5e5f525c168ec1fd9129c91e380309a136bd6e",
-                "reference": "ab5e5f525c168ec1fd9129c91e380309a136bd6e",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/a07573bb11109d5dbf0623fb495e65d4b56a010f",
+                "reference": "a07573bb11109d5dbf0623fb495e65d4b56a010f",
                 "shasum": ""
             },
             "require": {
@@ -228,7 +228,7 @@
                 }
             ],
             "description": "Typed Object Repository: Simplified version of signpostmarv/daft-object-repository for signpostmarv/daft-typed-object",
-            "time": "2019-08-26T22:48:28+00:00"
+            "time": "2019-08-28T20:17:33+00:00"
         }
     ],
     "packages-dev": [
