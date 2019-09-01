@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93ea590cfd88a667af92acccb69b0662",
+    "content-hash": "9745c0d466c632ed3f9015d4193ac295",
     "packages": [
         {
             "name": "paragonie/corner",
@@ -110,16 +110,16 @@
         },
         {
             "name": "signpostmarv/daft-typed-object",
-            "version": "dev-master",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object.git",
-                "reference": "4b9b7177b112a554cf89828837024fb3f563c2f0"
+                "reference": "15d94a82d0b7a67f0b4c0e7afd9c81aa681a198b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object/zipball/4b9b7177b112a554cf89828837024fb3f563c2f0",
-                "reference": "4b9b7177b112a554cf89828837024fb3f563c2f0",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object/zipball/15d94a82d0b7a67f0b4c0e7afd9c81aa681a198b",
+                "reference": "15d94a82d0b7a67f0b4c0e7afd9c81aa681a198b",
                 "shasum": ""
             },
             "require": {
@@ -166,7 +166,7 @@
                 }
             ],
             "description": "Typed Object, a simplified version of signpostmarv/daft-object",
-            "time": "2019-08-25T11:07:22+00:00"
+            "time": "2019-09-01T08:28:25+00:00"
         },
         {
             "name": "signpostmarv/daft-typed-object-repository",
@@ -174,19 +174,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object-Repository.git",
-                "reference": "a07573bb11109d5dbf0623fb495e65d4b56a010f"
+                "reference": "7ca48bc3662e1f8bb5a8be32aaff471c7cf7cb02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/a07573bb11109d5dbf0623fb495e65d4b56a010f",
-                "reference": "a07573bb11109d5dbf0623fb495e65d4b56a010f",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/7ca48bc3662e1f8bb5a8be32aaff471c7cf7cb02",
+                "reference": "7ca48bc3662e1f8bb5a8be32aaff471c7cf7cb02",
                 "shasum": ""
             },
             "require": {
                 "ext-hash": "*",
                 "ext-json": "*",
                 "php": "^7.3",
-                "signpostmarv/daft-typed-object": "^0.2|0.2.x-dev"
+                "signpostmarv/daft-typed-object": "^0.2.0"
             },
             "conflict": {
                 "vimeo/psalm": "<3.4"
@@ -209,7 +209,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.2.x-dev"
+                    "dev-master": "0.3.x-dev"
                 }
             },
             "autoload": {
@@ -228,7 +228,7 @@
                 }
             ],
             "description": "Typed Object Repository: Simplified version of signpostmarv/daft-object-repository for signpostmarv/daft-typed-object",
-            "time": "2019-08-28T20:17:33+00:00"
+            "time": "2019-09-01T09:19:26+00:00"
         }
     ],
     "packages-dev": [
@@ -4754,7 +4754,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "signpostmarv/daft-typed-object": 20,
         "signpostmarv/daft-typed-object-repository": 20,
         "roave/security-advisories": 20
     },
