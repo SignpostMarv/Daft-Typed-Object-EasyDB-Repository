@@ -136,4 +136,69 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			}
 		}
 	}
+
+	/**
+	* @return array<
+		int,
+		array{
+			0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
+			1:array{type:class-string<T1>},
+			2:array<string, scalar|null>,
+			3:array<string, scalar|null>,
+			4:array<string, scalar|null>
+		}
+	>
+	*/
+	public function dataProviderPatchObject() : array
+	{
+		$out = [
+			[
+				Fixtures\EasyDBTestRepository::class,
+				[
+					'type' => Fixtures\MutableForRepository::class,
+					EasyDB::class => Factory::create('sqlite::memory:'),
+					'table' => 'foo',
+				],
+				[
+					'id' => 0,
+					'name' => 'foo',
+				],
+				[
+					'name' => 'bar',
+				],
+				[
+					'id' => '1',
+					'name' => 'bar',
+				],
+			],
+		];
+
+		if ('true' === getenv('TRAVIS')) {
+			$out[] = [
+				Fixtures\EasyDBTestRepository::class,
+				[
+					'type' => Fixtures\MutableForRepository::class,
+					EasyDB::class => Factory::create(
+						'mysql:host=localhost;dbname=travis',
+						'travis',
+						''
+					),
+					'table' => 'foo',
+				],
+				[
+					'id' => 0,
+					'name' => 'foo',
+				],
+				[
+					'name' => 'bar',
+				],
+				[
+					'id' => '1',
+					'name' => 'bar',
+				],
+			];
+		}
+
+		return $out;
+	}
 }

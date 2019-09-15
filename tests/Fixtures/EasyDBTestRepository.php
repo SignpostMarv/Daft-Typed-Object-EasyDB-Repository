@@ -10,14 +10,16 @@ use ParagonIE\EasyDB\EasyDB;
 use PDO;
 use SignpostMarv\DaftTypedObject\AbstractDaftTypedObjectEasyDBRepository;
 use SignpostMarv\DaftTypedObject\DaftTypedObjectForRepository;
+use SignpostMarv\DaftTypedObject\PatchableObjectRepository;
 
 /**
 * @template T1 as MutableForRepository
 * @template T2 as array<string, scalar>
+* @template T3 as array<string, scalar|null>
 *
 * @template-extends AbstractDaftTypedObjectRepository<T1, T2>
 */
-class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository
+class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository implements PatchableObjectRepository
 {
 	/**
 	* @param array{type:class-string<T1>, EasyDB::class:EasyDB, table:string}
@@ -85,5 +87,19 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository
 		return $this->RecallTypedObject([
 			'id' => $id,
 		]);
+	}
+
+	public function PatchTypedObjectData(array $id, array $data) : void
+	{
+		$this->connection->tryFlatTransaction(
+			function (EasyDB $db) use ($id, $data) : void {
+				$db->update(
+					$this->table,
+					$data,
+					$id
+				);
+				$this->ForgetTypedObject($id);
+			}
+		);
 	}
 }
