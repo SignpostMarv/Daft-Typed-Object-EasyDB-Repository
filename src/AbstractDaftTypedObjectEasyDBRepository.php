@@ -17,15 +17,9 @@ use PDO;
 */
 abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTypedObjectRepository
 {
-	/**
-	* @var EasyDB
-	*/
-	protected $connection;
+	protected EasyDB $connection;
 
-	/**
-	* @var string
-	*/
-	protected $table;
+	protected string $table;
 
 	/**
 	* @param array{
