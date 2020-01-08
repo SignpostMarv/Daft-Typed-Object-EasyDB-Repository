@@ -23,10 +23,10 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 
 	/**
 	* @param array{
-		type:class-string<T1>,
-		ParagonIE\EasyDB\EasyDB:EasyDB,
-		table:string
-	} $options
+	*	type:class-string<T1>,
+	*	EasyDB::class:EasyDB,
+	*	table:string
+	* } $options
 	*/
 	public function __construct(
 		array $options
@@ -35,6 +35,9 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 			'type' => $options['type'],
 		]);
 
+		/**
+		* @var EasyDB
+		*/
 		$this->connection = $options[EasyDB::class];
 		$this->table = $options['table'];
 	}

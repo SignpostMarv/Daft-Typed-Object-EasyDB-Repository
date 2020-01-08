@@ -45,7 +45,7 @@
 		}
 	},
 	"conflict": {
-		"vimeo/psalm": "<3.7"
+		"vimeo/psalm": "<3.8"
 	},
 	"suggest": {
 		"vimeo/psalm": "for static analysis & templated typehinting"
@@ -54,18 +54,18 @@
         "php": "^7.4",
         "ext-PDO": "*",
         "paragonie/easydb": "^2.10",
-        "signpostmarv/daft-typed-object": "^0.4|0.4.x-dev",
-        "signpostmarv/daft-typed-object-repository": "^0.4|0.4.x-dev"
+        "signpostmarv/daft-typed-object": "^0.5|0.5.x-dev",
+        "signpostmarv/daft-typed-object-repository": "^0.5|0.5.x-dev"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpunit": "^8.5",
         "povils/phpmnd": "^2.1",
-        "psalm/plugin-phpunit": "^0.8.0",
+        "psalm/plugin-phpunit": "dev-master",
         "roave/security-advisories": "dev-master",
         "sebastian/phpcpd": "^4.1",
-        "signpostmarv/php-cs-fixer-config": "^0.13.0",
-        "vimeo/psalm": "^3.7"
+        "signpostmarv/php-cs-fixer-config": "^0.14.0",
+        "vimeo/psalm": "^3.8"
     }
 }

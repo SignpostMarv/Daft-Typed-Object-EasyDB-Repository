@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.7.2@d9cae720c1af31db9ba27c2bc1fcf9b0dd092fb0"/>
+<files psalm-version="3.8.2@90d6b73fd8062432030ef39b7b6694b3902daa31">
+  <file src="tests/DaftTypedObjectEasyDBRepositoryTest.php">
+    <LessSpecificImplementedReturnType occurrences="1"/>
+  </file>
+  <file src="tests/Fixtures/EasyDBTestRepository.php">
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$options</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+</files>

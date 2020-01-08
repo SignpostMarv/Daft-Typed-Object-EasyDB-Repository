@@ -71,6 +71,9 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			];
 		}
 
+		/**
+		* @var list<array{0: class-string<AppendableTypedObjectRepository>, 1: array{type: class-string<DaftTypedObjectForRepository>}, 2: list<array<string, null|scalar>>, 3: list<array<string, null|scalar>>}>
+		*/
 		return $out;
 	}
 
@@ -81,8 +84,8 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 	*
 	* @param class-string<AppendableTypedObjectRepository> $repo_type
 	* @param array{type:class-string<T1>} $repo_args
-	* @param array<int, S> $append_these
-	* @param array<int, S2> $expect_these
+	* @param list<S> $append_these
+	* @param list<S2> $expect_these
 	*/
 	public function testAppendTypedObject(
 		string $repo_type,
@@ -98,6 +101,9 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 		);
 
 		if (Fixtures\MutableForRepository::class === $repo_args['type']) {
+			/**
+			* @var Fixtures\EasyDBTestRepository|AppendableTypedObjectRepository
+			*/
 			$repo = new $repo_type(
 				$repo_args
 			);
@@ -105,16 +111,19 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			$object_type = $repo_args['type'];
 
 			/**
-			* @var array<int, T1>
+			* @var list<Fixtures\MutableForRepository>
 			*/
 			$testing = [];
 
 			foreach ($append_these as $i => $data) {
 				/**
-				* @var T1
+				* @var Fixtures\MutableForRepository
 				*/
 				$object = $object_type::__fromArray($data);
 
+				/**
+				* @var Fixtures\MutableForRepository
+				*/
 				$testing[$i] = $repo->AppendTypedObject($object);
 
 				$data['name'] = strrev($testing[$i]->name);
@@ -122,14 +131,23 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 
 				$repo->ForgetTypedObject($object->ObtainId());
 
+				/**
+				* @var Fixtures\MutableForRepository
+				*/
 				$replacing_with = $object_type::__fromArray($data);
 
+				/**
+				* @var Fixtures\MutableForRepository
+				*/
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
 				$this->assertSame($object->name, $fresh->name);
 
 				$repo->UpdateTypedObject($replacing_with);
 
+				/**
+				* @var Fixtures\MutableForRepository
+				*/
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
 				$this->assertNotSame($object->name, $fresh->name);
@@ -138,8 +156,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 	}
 
 	/**
-	* @return array<
-		int,
+	* @return list<
 		array{
 			0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
 			1:array{type:class-string<T1>},
@@ -199,6 +216,17 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			];
 		}
 
+		/**
+		* @var list<
+			array{
+				0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
+				1:array{type:class-string<T1>},
+				2:array<string, scalar|null>,
+				3:array<string, scalar|null>,
+				4:array<string, scalar|null>
+			}
+		>
+		*/
 		return $out;
 	}
 }

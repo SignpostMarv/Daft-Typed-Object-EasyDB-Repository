@@ -17,12 +17,16 @@ use SignpostMarv\DaftTypedObject\PatchableObjectRepository;
 * @template T2 as array<string, scalar>
 * @template T3 as array<string, scalar|null>
 *
-* @template-extends AbstractDaftTypedObjectRepository<T1, T2>
+* @template-extends AbstractDaftTypedObjectEasyDBRepository<T1, T2>
 */
 class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository implements PatchableObjectRepository
 {
 	/**
-	* @param array{type:class-string<T1>, EasyDB::class:EasyDB, table:string}
+	* @param array{
+	*	type:class-string<T1>,
+	*	EasyDB::class:EasyDB,
+	*	table:string
+	* } $options
 	*/
 	public function __construct(
 		array $options
@@ -31,6 +35,9 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 			$options
 		);
 
+		/**
+		* @var EasyDB
+		*/
 		$connection = $options[EasyDB::class];
 		$table = $options['table'];
 
@@ -79,14 +86,15 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 			'name' => $object->name,
 		]);
 
-		$id = $this->connection->lastInsertId();
+		/**
+		* @var array<string, scalar>
+		*/
+		$id = ['id' => $this->connection->lastInsertId()];
 
 		/**
 		* @var T1
 		*/
-		return $this->RecallTypedObject([
-			'id' => $id,
-		]);
+		return $this->RecallTypedObject($id);
 	}
 
 	public function PatchTypedObjectData(array $id, array $data) : void
