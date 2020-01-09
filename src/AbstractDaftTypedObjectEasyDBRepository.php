@@ -24,7 +24,7 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	/**
 	* @param array{
 	*	type:class-string<T1>,
-	*	EasyDB::class:EasyDB,
+	*	ParagonIE\EasyDB\EasyDB:EasyDB,
 	*	table:string
 	* } $options
 	*/
