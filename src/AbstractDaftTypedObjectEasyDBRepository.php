@@ -35,9 +35,6 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 			'type' => $options['type'],
 		]);
 
-		/**
-		* @var EasyDB
-		*/
 		$this->connection = $options[EasyDB::class];
 		$this->table = $options['table'];
 	}
