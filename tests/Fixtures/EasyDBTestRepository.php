@@ -24,7 +24,7 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 	/**
 	* @param array{
 	*	type:class-string<T1>,
-	*	EasyDB::class:EasyDB,
+	*	ParagonIE\EasyDB\EasyDB:EasyDB,
 	*	table:string
 	* } $options
 	*/
@@ -35,9 +35,6 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 			$options
 		);
 
-		/**
-		* @var EasyDB
-		*/
 		$connection = $options[EasyDB::class];
 		$table = $options['table'];
 
