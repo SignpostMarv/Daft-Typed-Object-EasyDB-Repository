@@ -87,7 +87,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 	* @param list<S> $append_these
 	* @param list<S2> $expect_these
 	*/
-	public function testAppendTypedObject(
+	public function test_append_typed_object(
 		string $repo_type,
 		array $repo_args,
 		array $append_these,
@@ -141,7 +141,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				*/
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
-				$this->assertSame($object->name, $fresh->name);
+				static::assertSame($object->name, $fresh->name);
 
 				$repo->UpdateTypedObject($replacing_with);
 
@@ -150,7 +150,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				*/
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
-				$this->assertNotSame($object->name, $fresh->name);
+				static::assertNotSame($object->name, $fresh->name);
 			}
 		}
 	}

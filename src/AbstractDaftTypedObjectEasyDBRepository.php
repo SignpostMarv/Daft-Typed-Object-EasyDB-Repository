@@ -76,7 +76,7 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 				$object->__toArray(),
 				array_filter(
 					$properties,
-					function (string $maybe) use ($id) : bool {
+					static function (string $maybe) use ($id) : bool {
 						return ! array_key_exists($maybe, $id);
 					}
 				)
