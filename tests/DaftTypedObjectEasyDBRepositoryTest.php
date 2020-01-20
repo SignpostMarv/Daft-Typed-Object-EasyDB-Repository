@@ -93,7 +93,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 		array $append_these,
 		array $expect_these
 	) : void {
-		parent::testAppendTypedObject(
+		parent::test_append_typed_object(
 			$repo_type,
 			$repo_args,
 			$append_these,

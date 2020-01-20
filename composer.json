@@ -53,9 +53,9 @@
     "require": {
         "php": "^7.4",
         "ext-PDO": "*",
-        "paragonie/easydb": "^2.10",
-        "signpostmarv/daft-typed-object": "^0.5|0.5.x-dev",
-        "signpostmarv/daft-typed-object-repository": "^0.5|0.5.x-dev"
+        "paragonie/easydb": "^2.11",
+        "signpostmarv/daft-typed-object": "^0.5.1",
+        "signpostmarv/daft-typed-object-repository": "^0.5.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0",
