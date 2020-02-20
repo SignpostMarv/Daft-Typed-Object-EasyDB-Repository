@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a48cceeb2e864d7566c7d16f6fd9c48c",
+    "content-hash": "03049833153e29c6bf4db203bc3d2217",
     "packages": [
         {
             "name": "paragonie/corner",
