@@ -3,3 +3,4 @@
 /phpunit.cache
 /phpunit.clover
 /.php_cs.cache
+/psalm/cache/
