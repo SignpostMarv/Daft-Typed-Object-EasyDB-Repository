@@ -72,7 +72,14 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 		}
 
 		/**
-		* @var list<array{0: class-string<AppendableTypedObjectRepository>, 1: array{type: class-string<DaftTypedObjectForRepository>}, 2: list<array<string, null|scalar>>, 3: list<array<string, null|scalar>>}>
+		* @var list<
+		*	array{
+		*		0:class-string<AppendableTypedObjectRepository>,
+		*		1:array{type:class-string<T1>},
+		*		2:list<S>,
+		*		3:list<S2>
+		*	}
+		* >
 		*/
 		return $out;
 	}
