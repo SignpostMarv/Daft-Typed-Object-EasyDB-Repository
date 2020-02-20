@@ -164,14 +164,14 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 
 	/**
 	 * @return list<
-		array{
-			0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
-			1:array{type:class-string<T1>},
-			2:array<string, scalar|null>,
-			3:array<string, scalar|null>,
-			4:array<string, scalar|null>
-		}
-	>
+	 *	array{
+	 *		0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
+	 *		1:array{type:class-string<T1>},
+	 *		2:array<string, scalar|null>,
+	 *		3:array<string, scalar|null>,
+	 *		4:array<string, scalar|null>
+	 *	}
+	 * >
 	 */
 	public function dataProviderPatchObject() : array
 	{
@@ -225,14 +225,14 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 
 		/**
 		 * @var list<
-			array{
-				0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
-				1:array{type:class-string<T1>},
-				2:array<string, scalar|null>,
-				3:array<string, scalar|null>,
-				4:array<string, scalar|null>
-			}
-		>
+		 *	array{
+		 *		0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
+		 *		1:array{type:class-string<T1>},
+		 *		2:array<string, scalar|null>,
+		 *		3:array<string, scalar|null>,
+		 *		4:array<string, scalar|null>
+		 *	}
+		 * >
 		 */
 		return $out;
 	}
