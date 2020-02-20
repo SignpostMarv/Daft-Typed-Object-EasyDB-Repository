@@ -10,13 +10,13 @@ use ParagonIE\EasyDB\EasyDB;
 use ParagonIE\EasyDB\Factory;
 
 /**
-* @template S as array<string, scalar|null>
-* @template S2 as array<string, scalar|null>
-* @template T as array<string, scalar|array|object|null>
-* @template T1 as DaftTypedObjectForRepository
-*
-* @template-extends DaftTypedObjectRepositoryTest<S, S2, T, T1>
-*/
+ * @template S as array<string, scalar|null>
+ * @template S2 as array<string, scalar|null>
+ * @template T as array<string, scalar|array|object|null>
+ * @template T1 as DaftTypedObjectForRepository
+ *
+ * @template-extends DaftTypedObjectRepositoryTest<S, S2, T, T1>
+ */
 class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 {
 	public function dataProviderAppendTypedObject() : array
@@ -72,28 +72,28 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 		}
 
 		/**
-		* @var list<
-		*	array{
-		*		0:class-string<AppendableTypedObjectRepository>,
-		*		1:array{type:class-string<T1>},
-		*		2:list<S>,
-		*		3:list<S2>
-		*	}
-		* >
-		*/
+		 * @var list<
+		 *	array{
+		 *		0:class-string<AppendableTypedObjectRepository>,
+		 *		1:array{type:class-string<T1>},
+		 *		2:list<S>,
+		 *		3:list<S2>
+		 *	}
+		 * >
+		 */
 		return $out;
 	}
 
 	/**
-	* @template K as key-of<S>
-	*
-	* @dataProvider dataProviderAppendTypedObject
-	*
-	* @param class-string<AppendableTypedObjectRepository> $repo_type
-	* @param array{type:class-string<T1>} $repo_args
-	* @param list<S> $append_these
-	* @param list<S2> $expect_these
-	*/
+	 * @template K as key-of<S>
+	 *
+	 * @dataProvider dataProviderAppendTypedObject
+	 *
+	 * @param class-string<AppendableTypedObjectRepository> $repo_type
+	 * @param array{type:class-string<T1>} $repo_args
+	 * @param list<S> $append_these
+	 * @param list<S2> $expect_these
+	 */
 	public function test_append_typed_object(
 		string $repo_type,
 		array $repo_args,
@@ -109,8 +109,8 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 
 		if (Fixtures\MutableForRepository::class === $repo_args['type']) {
 			/**
-			* @var Fixtures\EasyDBTestRepository|AppendableTypedObjectRepository
-			*/
+			 * @var Fixtures\EasyDBTestRepository|AppendableTypedObjectRepository
+			 */
 			$repo = new $repo_type(
 				$repo_args
 			);
@@ -118,19 +118,19 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			$object_type = $repo_args['type'];
 
 			/**
-			* @var list<Fixtures\MutableForRepository>
-			*/
+			 * @var list<Fixtures\MutableForRepository>
+			 */
 			$testing = [];
 
 			foreach ($append_these as $i => $data) {
 				/**
-				* @var Fixtures\MutableForRepository
-				*/
+				 * @var Fixtures\MutableForRepository
+				 */
 				$object = $object_type::__fromArray($data);
 
 				/**
-				* @var Fixtures\MutableForRepository
-				*/
+				 * @var Fixtures\MutableForRepository
+				 */
 				$testing[$i] = $repo->AppendTypedObject($object);
 
 				$data['name'] = strrev($testing[$i]->name);
@@ -139,13 +139,13 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				$repo->ForgetTypedObject($object->ObtainId());
 
 				/**
-				* @var Fixtures\MutableForRepository
-				*/
+				 * @var Fixtures\MutableForRepository
+				 */
 				$replacing_with = $object_type::__fromArray($data);
 
 				/**
-				* @var Fixtures\MutableForRepository
-				*/
+				 * @var Fixtures\MutableForRepository
+				 */
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
 				static::assertSame($object->name, $fresh->name);
@@ -153,8 +153,8 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				$repo->UpdateTypedObject($replacing_with);
 
 				/**
-				* @var Fixtures\MutableForRepository
-				*/
+				 * @var Fixtures\MutableForRepository
+				 */
 				$fresh = $repo->RecallTypedObject($replacing_with->ObtainId());
 
 				static::assertNotSame($object->name, $fresh->name);
@@ -163,7 +163,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 	}
 
 	/**
-	* @return list<
+	 * @return list<
 		array{
 			0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
 			1:array{type:class-string<T1>},
@@ -172,7 +172,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 			4:array<string, scalar|null>
 		}
 	>
-	*/
+	 */
 	public function dataProviderPatchObject() : array
 	{
 		$out = [
@@ -224,7 +224,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 		}
 
 		/**
-		* @var list<
+		 * @var list<
 			array{
 				0:class-string<AppendableTypedObjectRepository&PatchableObjectRepository>,
 				1:array{type:class-string<T1>},
@@ -233,7 +233,7 @@ class DaftTypedObjectEasyDBRepositoryTest extends DaftTypedObjectRepositoryTest
 				4:array<string, scalar|null>
 			}
 		>
-		*/
+		 */
 		return $out;
 	}
 }

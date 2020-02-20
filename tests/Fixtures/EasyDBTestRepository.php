@@ -13,21 +13,21 @@ use SignpostMarv\DaftTypedObject\DaftTypedObjectForRepository;
 use SignpostMarv\DaftTypedObject\PatchableObjectRepository;
 
 /**
-* @template T1 as MutableForRepository
-* @template T2 as array<string, scalar>
-* @template T3 as array<string, scalar|null>
-*
-* @template-extends AbstractDaftTypedObjectEasyDBRepository<T1, T2>
-*/
+ * @template T1 as MutableForRepository
+ * @template T2 as array<string, scalar>
+ * @template T3 as array<string, scalar|null>
+ *
+ * @template-extends AbstractDaftTypedObjectEasyDBRepository<T1, T2>
+ */
 class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository implements PatchableObjectRepository
 {
 	/**
-	* @param array{
-	*	type:class-string<T1>,
-	*	ParagonIE\EasyDB\EasyDB:EasyDB,
-	*	table:string
-	* } $options
-	*/
+	 * @param array{
+	 *	type:class-string<T1>,
+	 *	ParagonIE\EasyDB\EasyDB:EasyDB,
+	 *	table:string
+	 * } $options
+	 */
 	public function __construct(
 		array $options
 	) {
@@ -72,10 +72,10 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 	}
 
 	/**
-	* @param T1 $object
-	*
-	* @return T1
-	*/
+	 * @param T1 $object
+	 *
+	 * @return T1
+	 */
 	public function AppendTypedObject(
 		DaftTypedObjectForRepository $object
 	) : DaftTypedObjectForRepository {
@@ -84,13 +84,13 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 		]);
 
 		/**
-		* @var array<string, scalar>
-		*/
+		 * @var array<string, scalar>
+		 */
 		$id = ['id' => $this->connection->lastInsertId()];
 
 		/**
-		* @var T1
-		*/
+		 * @var T1
+		 */
 		return $this->RecallTypedObject($id);
 	}
 

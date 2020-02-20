@@ -10,11 +10,11 @@ use ParagonIE\EasyDB\EasyDB;
 use PDO;
 
 /**
-* @template T1 as DaftTypedObjectForRepository
-* @template T2 as array<string, scalar>
-*
-* @template-extends AbstractDaftTypedObjectRepository<T1, T2>
-*/
+ * @template T1 as DaftTypedObjectForRepository
+ * @template T2 as array<string, scalar>
+ *
+ * @template-extends AbstractDaftTypedObjectRepository<T1, T2>
+ */
 abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTypedObjectRepository
 {
 	protected EasyDB $connection;
@@ -22,12 +22,12 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	protected string $table;
 
 	/**
-	* @param array{
-	*	type:class-string<T1>,
-	*	ParagonIE\EasyDB\EasyDB:EasyDB,
-	*	table:string
-	* } $options
-	*/
+	 * @param array{
+	 *	type:class-string<T1>,
+	 *	ParagonIE\EasyDB\EasyDB:EasyDB,
+	 *	table:string
+	 * } $options
+	 */
 	public function __construct(
 		array $options
 	) {
@@ -40,16 +40,16 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	}
 
 	/**
-	* @param T1 $object
-	*/
+	 * @param T1 $object
+	 */
 	public function UpdateTypedObject(
 		DaftTypedObjectForRepository $object
 	) : void {
 		$id = $object->ObtainId();
 
 		/**
-		* @var array<int, string>
-		*/
+		 * @var array<int, string>
+		 */
 		$properties = $object::TYPED_PROPERTIES;
 
 		if ('sqlite' === $this->connection->getDriver()) {
@@ -87,8 +87,8 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	}
 
 	/**
-	* @param T2 $id
-	*/
+	 * @param T2 $id
+	 */
 	public function RemoveTypedObject(array $id) : void
 	{
 		$this->connection->delete($this->table, $id);
@@ -99,10 +99,10 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	}
 
 	/**
-	* @param T2 $id
-	*
-	* @return T1|null
-	*/
+	 * @param T2 $id
+	 *
+	 * @return T1|null
+	 */
 	public function MaybeRecallTypedObject(
 		array $id
 	) : ? DaftTypedObjectForRepository {
@@ -111,13 +111,13 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 		if (is_null($maybe)) {
 			$type = $this->type;
 			/**
-			* @var array<int, string>
-			*/
+			 * @var array<int, string>
+			 */
 			$properties = $type::TYPED_PROPERTIES;
 
 			/**
-			* @var array<int, string>
-			*/
+			 * @var array<int, string>
+			 */
 			$id_fields = array_keys($id);
 
 			$sth = $this->connection->prepare(
@@ -146,14 +146,14 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 			$sth->execute(array_values($id));
 
 			/**
-			* @var array<string, scalar|null>|null
-			*/
+			 * @var array<string, scalar|null>|null
+			 */
 			$row = $sth->fetch(PDO::FETCH_ASSOC);
 
 			if (is_array($row)) {
 				/**
-				* @var T1
-				*/
+				 * @var T1
+				 */
 				$maybe = $type::__fromArray($row);
 
 				parent::UpdateTypedObject($maybe);
