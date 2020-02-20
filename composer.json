@@ -29,10 +29,10 @@
 	"scripts": {
 		"tests": [
 			"phpunit",
+			"psalm --show-info=false --diff --diff-methods",
 			"@static-analysis"
 		],
 		"static-analysis": [
-			"psalm --shepherd --show-info=false",
 			"phpcpd src tests",
 			"phpmnd ./ --exclude=./phpunit/ --exclude=./vendor/ --non-zero-exit-on-violation --hint",
 			"composer-require-checker check ./composer.json",

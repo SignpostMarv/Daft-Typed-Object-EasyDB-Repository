@@ -2,20 +2,32 @@ dist: xenial
 language: php
 php:
   - 7.4.0
+  - 7.4.1
   - 7.4
 cache:
   files:
     - ./phpunit.cache
     - ./.php_cs.cache
   directories:
-    - ./vendor/
+    - $HOME/.composer/cache
+    - ./psalm/cache
+before_script:
+  - if [[ "$xdebug" != "yes" || "$psalm" = "yes" ]]; then phpenv config-rm xdebug.ini; fi
 install:
   - travis_retry composer install --no-interaction --no-suggest --prefer-source
 script:
-  - composer run static-analysis
-  - ./vendor/bin/phpunit --coverage-clover=./phpunit.clover
-  - ./vendor/bin/php-coveralls
+  - if [[ "$psalm" = "yes" ]]; then ./vendor/bin/psalm --show-info=false --diff --diff-methods; fi
+  - if [[ "$xdebug" != "yes" && "$psalm" != "yes" ]]; then composer run static-analysis; fi
+  - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/phpunit --coverage-clover=./phpunit.clover; fi
+  - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/php-coveralls; fi
 matrix:
+  include:
+    - php: 7.4
+      env:
+        - xdebug=yes
+    - php: 7.4
+      env:
+        - psalm=yes
   fast_finish: true
 services:
   - mysql
