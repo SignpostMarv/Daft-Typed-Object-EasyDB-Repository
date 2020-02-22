@@ -6,7 +6,7 @@ php:
   - 7.4
 cache:
   files:
-    - ./phpunit.cache
+    - ./.phpunit.result.cache
     - ./.php_cs.cache
   directories:
     - $HOME/.composer/cache

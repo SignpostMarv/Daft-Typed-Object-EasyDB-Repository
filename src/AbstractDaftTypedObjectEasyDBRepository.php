@@ -6,37 +6,39 @@ declare(strict_types=1);
 
 namespace SignpostMarv\DaftTypedObject;
 
+use DaftFramework\RelaxedObjectRepository\ObjectEasyDBRepository;
 use ParagonIE\EasyDB\EasyDB;
-use PDO;
+use Throwable;
 
 /**
  * @template T1 as DaftTypedObjectForRepository
  * @template T2 as array<string, scalar>
+ * @template T3 as array<string, scalar|null>
+ * @template T4 as array{
+ *	type:class-string<DaftTypedObjectForRepository>,
+ *	ParagonIE\EasyDB\EasyDB:EasyDB,
+ *	table:string
+ * }
  *
- * @template-extends AbstractDaftTypedObjectRepository<T1, T2>
+ * @template-extends ObjectEasyDBRepository<T1, T2, T3, T4>
+ *
+ * @template-implements DaftTypedObjectRepository<T1, T2, T4>
  */
-abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTypedObjectRepository
+abstract class AbstractDaftTypedObjectEasyDBRepository extends ObjectEasyDBRepository implements DaftTypedObjectRepository
 {
-	protected EasyDB $connection;
-
-	protected string $table;
+	/** @var class-string<T1> */
+	protected string $type;
 
 	/**
-	 * @param array{
-	 *	type:class-string<T1>,
-	 *	ParagonIE\EasyDB\EasyDB:EasyDB,
-	 *	table:string
-	 * } $options
+	 * @param T4 $options
 	 */
 	public function __construct(
 		array $options
 	) {
-		parent::__construct([
-			'type' => $options['type'],
-		]);
+		parent::__construct($options);
 
-		$this->connection = $options[EasyDB::class];
-		$this->table = $options['table'];
+		/** @var class-string<T1> */
+		$this->type = $options['type'];
 	}
 
 	/**
@@ -45,45 +47,15 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	public function UpdateTypedObject(
 		DaftTypedObjectForRepository $object
 	) : void {
-		$id = $object->ObtainId();
+		$this->UpdateObject($object);
+	}
 
-		/**
-		 * @var array<int, string>
-		 */
-		$properties = $object::TYPED_PROPERTIES;
-
-		if ('sqlite' === $this->connection->getDriver()) {
-			$sth = $this->connection->prepare(
-				'REPLACE INTO ' .
-				$this->connection->escapeIdentifier($this->table) .
-				' (' .
-				implode(', ', array_map(
-					[$this->connection, 'escapeIdentifier'],
-					$properties
-				)) .
-				') VALUES (' .
-				implode(
-					', ',
-					array_fill(0, count($properties), '?')
-				) .
-				')'
-			);
-
-			$sth->execute(array_values($object->__toArray()));
-		} else {
-			$this->connection->insertOnDuplicateKeyUpdate(
-				$this->table,
-				$object->__toArray(),
-				array_filter(
-					$properties,
-					static function (string $maybe) use ($id) : bool {
-						return ! array_key_exists($maybe, $id);
-					}
-				)
-			);
-		}
-
-		parent::UpdateTypedObject($object);
+	/**
+	 * @param T2 $id
+	 */
+	public function ForgetTypedObject(array $id) : void
+	{
+		$this->ForgetObject($id);
 	}
 
 	/**
@@ -91,11 +63,21 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	 */
 	public function RemoveTypedObject(array $id) : void
 	{
-		$this->connection->delete($this->table, $id);
+		$this->RemoveObject($id);
+		$this->ForgetTypedObject($id);
+		$this->PurgeObjectDataCache($id);
+	}
 
-		$hash = static::DaftTypedObjectHash($id);
-
-		unset($this->memory[$hash]);
+	/**
+	 * @param T2 $id
+	 *
+	 * @return T1
+	 */
+	public function RecallTypedObject(
+		array $id,
+		Throwable $not_found = null
+	) : DaftTypedObjectForRepository {
+		return $this->RecallObject($id, $not_found);
 	}
 
 	/**
@@ -106,60 +88,17 @@ abstract class AbstractDaftTypedObjectEasyDBRepository extends AbstractDaftTyped
 	public function MaybeRecallTypedObject(
 		array $id
 	) : ? DaftTypedObjectForRepository {
-		$maybe = parent::MaybeRecallTypedObject($id);
+		/** @var T1|null */
+		return $this->MaybeRecallObject($id);
+	}
 
-		if (is_null($maybe)) {
-			$type = $this->type;
-			/**
-			 * @var array<int, string>
-			 */
-			$properties = $type::TYPED_PROPERTIES;
-
-			/**
-			 * @var array<int, string>
-			 */
-			$id_fields = array_keys($id);
-
-			$sth = $this->connection->prepare(
-				'SELECT ' .
-				implode(', ', array_map(
-					[$this->connection, 'escapeIdentifier'],
-					$properties
-				)) .
-				' FROM ' .
-				$this->connection->escapeIdentifier($this->table) .
-				' WHERE ' .
-				implode(
-					' AND ',
-					array_map(
-						function (string $field) : string {
-							return
-								$this->connection->escapeIdentifier($field) .
-								' = ?';
-						},
-						$id_fields
-					)
-				) .
-				' LIMIT 1'
-			);
-
-			$sth->execute(array_values($id));
-
-			/**
-			 * @var array<string, scalar|null>|null
-			 */
-			$row = $sth->fetch(PDO::FETCH_ASSOC);
-
-			if (is_array($row)) {
-				/**
-				 * @var T1
-				 */
-				$maybe = $type::__fromArray($row);
-
-				parent::UpdateTypedObject($maybe);
-			}
-		}
-
-		return $maybe;
+	/**
+	 * @param T1 $object
+	 *
+	 * @return T2
+	 */
+	public function ObtainIdFromObject(object $object) : array
+	{
+		return $object->ObtainId();
 	}
 }

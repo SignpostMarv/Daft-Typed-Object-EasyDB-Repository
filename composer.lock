@@ -4,8 +4,118 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03049833153e29c6bf4db203bc3d2217",
+    "content-hash": "4a7e02fb71478b91c33a51805657e8a2",
     "packages": [
+        {
+            "name": "daft-framework/daft-relaxed-object-easydb-repository",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daft-framework/daft-relaxed-object-easydb-repository.git",
+                "reference": "635306e6ff0efc882217da91afdac7e86d82077c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daft-framework/daft-relaxed-object-easydb-repository/zipball/635306e6ff0efc882217da91afdac7e86d82077c",
+                "reference": "635306e6ff0efc882217da91afdac7e86d82077c",
+                "shasum": ""
+            },
+            "require": {
+                "daft-framework/daft-relaxed-object-repository": "dev-master",
+                "ext-pdo": "*",
+                "paragonie/easydb": "^2.11",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.15.3",
+                "maglnet/composer-require-checker": "^2.0",
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^8.5",
+                "povils/phpmnd": "^2.2",
+                "psalm/plugin-phpunit": "^0.9.0",
+                "sebastian/phpcpd": "^5.0",
+                "signpostmarv/php-cs-fixer-config": "^0.17.1",
+                "vimeo/psalm": "^3.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DaftFramework\\RelaxedObjectRepository\\": [
+                        "./src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "SignpostMarv",
+                    "email": "me@signpostmarv.name"
+                }
+            ],
+            "description": "relaxed-object implementation of signpostmarv/daft-typed-object-easydb-repository",
+            "time": "2020-02-22T17:14:48+00:00"
+        },
+        {
+            "name": "daft-framework/daft-relaxed-object-repository",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daft-framework/daft-relaxed-object-repository.git",
+                "reference": "51beac50f4249e91f66686e61a84738a899d91d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daft-framework/daft-relaxed-object-repository/zipball/51beac50f4249e91f66686e61a84738a899d91d2",
+                "reference": "51beac50f4249e91f66686e61a84738a899d91d2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-hash": "*",
+                "ext-json": "*",
+                "php": "^7.4"
+            },
+            "conflict": {
+                "vimeo/psalm": "<3.9.3"
+            },
+            "require-dev": {
+                "ext-ctype": "*",
+                "ext-xdebug": "*",
+                "infection/infection": "^0.15.3",
+                "maglnet/composer-require-checker": "^2.0",
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^8.5",
+                "povils/phpmnd": "^2.2",
+                "psalm/plugin-phpunit": "^0.9.0",
+                "roave/security-advisories": "dev-master",
+                "sebastian/phpcpd": "^5.0",
+                "signpostmarv/php-cs-fixer-config": "^0.17.1",
+                "vimeo/psalm": "^3.9"
+            },
+            "suggest": {
+                "vimeo/psalm": "for static analysis & templated typehinting"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DaftFramework\\RelaxedObjectRepository\\": "./src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "SignpostMarv",
+                    "email": "me@signpostmarv.name"
+                }
+            ],
+            "description": "Relaxed Object Repository: Simplified version of signpostmarv/daft-typed-object-repository for objects other than signpostmarv/daft-typed-object implementations",
+            "time": "2020-02-22T14:46:09+00:00"
+        },
         {
             "name": "paragonie/corner",
             "version": "v2.0.1",
@@ -172,39 +282,40 @@
         },
         {
             "name": "signpostmarv/daft-typed-object-repository",
-            "version": "v0.5.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object-Repository.git",
-                "reference": "59662df9624dbbbd282635b06913aedd45a2c313"
+                "reference": "827ee0733616aeee5715f738d25cdc4aea951229"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/59662df9624dbbbd282635b06913aedd45a2c313",
-                "reference": "59662df9624dbbbd282635b06913aedd45a2c313",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/827ee0733616aeee5715f738d25cdc4aea951229",
+                "reference": "827ee0733616aeee5715f738d25cdc4aea951229",
                 "shasum": ""
             },
             "require": {
+                "daft-framework/daft-relaxed-object-repository": "dev-master",
                 "ext-hash": "*",
                 "ext-json": "*",
                 "php": "^7.4",
                 "signpostmarv/daft-typed-object": "^0.5.2"
             },
             "conflict": {
-                "vimeo/psalm": "<3.8.3"
+                "vimeo/psalm": "<3.9.3"
             },
             "require-dev": {
                 "ext-xdebug": "*",
-                "infection/infection": "^0.15.1",
+                "infection/infection": "^0.15.3",
                 "maglnet/composer-require-checker": "^2.0",
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpunit/phpunit": "^8.5",
                 "povils/phpmnd": "^2.2",
-                "psalm/plugin-phpunit": "^0.8.1",
+                "psalm/plugin-phpunit": "^0.9.0",
                 "roave/security-advisories": "dev-master",
                 "sebastian/phpcpd": "^4.1",
                 "signpostmarv/php-cs-fixer-config": "^0.17.0",
-                "vimeo/psalm": "^3.8"
+                "vimeo/psalm": "^3.9"
             },
             "suggest": {
                 "vimeo/psalm": "for static analysis & templated typehinting"
@@ -212,7 +323,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "0.6.x-dev"
                 }
             },
             "autoload": {
@@ -231,7 +342,7 @@
                 }
             ],
             "description": "Typed Object Repository: Simplified version of signpostmarv/daft-object-repository for signpostmarv/daft-typed-object",
-            "time": "2020-02-17T21:28:59+00:00"
+            "time": "2020-02-22T18:39:42+00:00"
         }
     ],
     "packages-dev": [
@@ -2318,7 +2429,7 @@
         },
         {
             "name": "psalm/plugin-phpunit",
-            "version": "dev-master",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phpunit-psalm-plugin.git",
@@ -4820,7 +4931,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "psalm/plugin-phpunit": 20,
+        "daft-framework/daft-relaxed-object-easydb-repository": 20,
+        "daft-framework/daft-relaxed-object-repository": 20,
+        "signpostmarv/daft-typed-object-repository": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

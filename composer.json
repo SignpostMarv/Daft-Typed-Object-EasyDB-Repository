@@ -15,6 +15,10 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
+			"DaftFramework\\RelaxedObjectRepository\\": [
+				"./vendor/daft-framework/daft-relaxed-object-repository/Tests/",
+				"./vendor/daft-framework/daft-relaxed-object-easydb-repository/tests/"
+			],
 			"SignpostMarv\\DaftTypedObject\\": [
 				"./tests/",
 				"./vendor/signpostmarv/daft-typed-object/Tests/",
@@ -45,7 +49,7 @@
 		}
 	},
 	"conflict": {
-		"vimeo/psalm": "<3.8.3"
+		"vimeo/psalm": "<3.9.3"
 	},
 	"suggest": {
 		"vimeo/psalm": "for static analysis & templated typehinting"
@@ -53,19 +57,21 @@
     "require": {
         "php": "^7.4",
         "ext-PDO": "*",
+        "daft-framework/daft-relaxed-object-easydb-repository": "dev-master",
+        "daft-framework/daft-relaxed-object-repository": "dev-master",
         "paragonie/easydb": "^2.11",
         "signpostmarv/daft-typed-object": "^0.5.1",
-        "signpostmarv/daft-typed-object-repository": "^0.5.0"
+        "signpostmarv/daft-typed-object-repository": "0.6.x-dev"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpunit": "^8.5",
         "povils/phpmnd": "^2.1",
-        "psalm/plugin-phpunit": "dev-master",
+        "psalm/plugin-phpunit": "^0.9.0",
         "roave/security-advisories": "dev-master",
         "sebastian/phpcpd": "^4.1",
         "signpostmarv/php-cs-fixer-config": "^0.17.1",
-        "vimeo/psalm": "^3.8"
+        "vimeo/psalm": "^3.9"
     }
 }
