@@ -57,11 +57,11 @@
     "require": {
         "php": "^7.4",
         "ext-PDO": "*",
-        "daft-framework/daft-relaxed-object-easydb-repository": "dev-master",
-        "daft-framework/daft-relaxed-object-repository": "dev-master",
+        "daft-framework/daft-relaxed-object-easydb-repository": "^0.1.0",
+        "daft-framework/daft-relaxed-object-repository": "^0.1.0",
         "paragonie/easydb": "^2.11",
         "signpostmarv/daft-typed-object": "^0.5.1",
-        "signpostmarv/daft-typed-object-repository": "0.6.x-dev"
+        "signpostmarv/daft-typed-object-repository": "^0.6.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0",

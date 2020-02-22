@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a7e02fb71478b91c33a51805657e8a2",
+    "content-hash": "01ba54035c9e5505063e77644a44571e",
     "packages": [
         {
             "name": "daft-framework/daft-relaxed-object-easydb-repository",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/daft-relaxed-object-easydb-repository.git",
-                "reference": "635306e6ff0efc882217da91afdac7e86d82077c"
+                "reference": "913e0444b5ac7b74bbe18ecce2a459388406b541"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/daft-relaxed-object-easydb-repository/zipball/635306e6ff0efc882217da91afdac7e86d82077c",
-                "reference": "635306e6ff0efc882217da91afdac7e86d82077c",
+                "url": "https://api.github.com/repos/daft-framework/daft-relaxed-object-easydb-repository/zipball/913e0444b5ac7b74bbe18ecce2a459388406b541",
+                "reference": "913e0444b5ac7b74bbe18ecce2a459388406b541",
                 "shasum": ""
             },
             "require": {
-                "daft-framework/daft-relaxed-object-repository": "dev-master",
+                "daft-framework/daft-relaxed-object-repository": "^0.1.0",
                 "ext-pdo": "*",
                 "paragonie/easydb": "^2.11",
                 "php": "^7.4"
@@ -56,11 +56,11 @@
                 }
             ],
             "description": "relaxed-object implementation of signpostmarv/daft-typed-object-easydb-repository",
-            "time": "2020-02-22T17:14:48+00:00"
+            "time": "2020-02-22T21:20:07+00:00"
         },
         {
             "name": "daft-framework/daft-relaxed-object-repository",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/daft-relaxed-object-repository.git",
@@ -282,20 +282,20 @@
         },
         {
             "name": "signpostmarv/daft-typed-object-repository",
-            "version": "dev-master",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daft-framework/Daft-Typed-Object-Repository.git",
-                "reference": "827ee0733616aeee5715f738d25cdc4aea951229"
+                "reference": "96fc7873b881d94ed3b771a72c2cb78e7d44511e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/827ee0733616aeee5715f738d25cdc4aea951229",
-                "reference": "827ee0733616aeee5715f738d25cdc4aea951229",
+                "url": "https://api.github.com/repos/daft-framework/Daft-Typed-Object-Repository/zipball/96fc7873b881d94ed3b771a72c2cb78e7d44511e",
+                "reference": "96fc7873b881d94ed3b771a72c2cb78e7d44511e",
                 "shasum": ""
             },
             "require": {
-                "daft-framework/daft-relaxed-object-repository": "dev-master",
+                "daft-framework/daft-relaxed-object-repository": "^0.1.0",
                 "ext-hash": "*",
                 "ext-json": "*",
                 "php": "^7.4",
@@ -342,7 +342,7 @@
                 }
             ],
             "description": "Typed Object Repository: Simplified version of signpostmarv/daft-object-repository for signpostmarv/daft-typed-object",
-            "time": "2020-02-22T18:39:42+00:00"
+            "time": "2020-02-22T21:27:40+00:00"
         }
     ],
     "packages-dev": [
@@ -4931,9 +4931,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "daft-framework/daft-relaxed-object-easydb-repository": 20,
-        "daft-framework/daft-relaxed-object-repository": 20,
-        "signpostmarv/daft-typed-object-repository": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
