@@ -12,7 +12,9 @@
         "@default": true,
         "MethodCallRemoval": {
             "ignore": [
-                "SignpostMarv\\DaftTypedObject\\AbstractDaftTypedObjectEasyDBRepository::RemoveTypedObject"
+                "SignpostMarv\\DaftTypedObject\\AbstractDaftTypedObjectEasyDBRepository::ForgetTypedObject",
+                "SignpostMarv\\DaftTypedObject\\AbstractDaftTypedObjectEasyDBRepository::RemoveTypedObject",
+                "SignpostMarv\\DaftTypedObject\\AbstractDaftTypedObjectEasyDBRepository::UpdateTypedObject"
             ]
         }
     }
