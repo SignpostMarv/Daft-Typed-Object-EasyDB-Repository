@@ -33,6 +33,7 @@
 	"scripts": {
 		"tests": [
 			"phpunit",
+			"infection --min-msi=100",
 			"psalm --show-info=false --diff --diff-methods",
 			"@static-analysis"
 		],
@@ -64,6 +65,7 @@
         "signpostmarv/daft-typed-object-repository": "^0.6.0"
     },
     "require-dev": {
+        "infection/infection": "^0.15.3",
         "maglnet/composer-require-checker": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpunit": "^8.5",
