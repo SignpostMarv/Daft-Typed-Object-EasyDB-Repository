@@ -29,5 +29,6 @@ script:
   - if [[ "$xdebug" = "yes" ]]; then ./vendor/bin/infection --min-msi=100; fi
   - if [[ "$psalm" = "yes" ]]; then ./vendor/bin/psalm --shepherd --show-info=false --diff --diff-methods --threads=2; fi
   - if [[ "$xdebug" != "yes" ]]; then composer run static-analysis; fi
+  - if [[ "$xdebug" = "yes" ]]; then composer update --dry-run roave/security-advisories; fi
 after_script:
   - if [[ "$xdebug" = "yes" ]]; then cat infection.log; fi
