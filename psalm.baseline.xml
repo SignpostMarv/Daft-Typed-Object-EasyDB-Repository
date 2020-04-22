@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.9.3@2e4154d76e24d1b4e59e6cc2bebef7790cb9e550">
+<files psalm-version="3.11.2@d470903722cfcbc1cd04744c5491d3e6d13ec3d9">
   <file src="tests/DaftRelaxedObjectRepositoryTest.php">
     <InvalidTemplateParam occurrences="1">
       <code>DaftRelaxedObjectRepositoryTest</code>
     </InvalidTemplateParam>
-  </file>
-  <file src="tests/DaftTypedObjectEasyDBRepositoryTest.php">
-    <InvalidTemplateParam occurrences="1">
-      <code>DaftTypedObjectEasyDBRepositoryTest</code>
-    </InvalidTemplateParam>
-    <LessSpecificImplementedReturnType occurrences="1"/>
   </file>
 </files>

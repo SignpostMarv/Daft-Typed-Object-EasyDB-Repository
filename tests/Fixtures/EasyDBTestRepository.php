@@ -122,7 +122,6 @@ class EasyDBTestRepository extends AbstractDaftTypedObjectEasyDBRepository imple
 	 */
 	public function AppendObjectFromArray(array $data) : object
 	{
-		/** @var T1 */
 		$object = $this->ConvertSimpleArrayToObject($data);
 
 		return $this->AppendObject($object);
